@@ -1,0 +1,36 @@
+<p>
+  registration works!
+</p>
+<!-- ================= For Custom pipe: Start =================  -->
+<div>
+  <h4>This is for the Custom Pipe</h4>
+  
+  
+</div>
+<!-- ================= For Custom pipe: End =================  -->
+
+<!-- ============= Data from ng-conntainer: Start =============  -->
+<!-- <ng-content></ng-content> -->
+<br><br><h5>Data coming from Child Class</h5>
+<div class="card">
+  <div class="card-header">
+    <ng-content select=".headingPart"></ng-content>
+  </div>
+  <div class="card-body">
+    <ng-content select=".bodyPart"></ng-content>
+  </div>
+</div>
+<!-- ============= Data from ng-conntainer: End =============  -->
+
+<form action="">
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" name="" class="form-control" >
+    </div>
+    <button class="btn btn-primary">New Component</button>
+  </form>
+
+  {{parentData}}
+  <br>
+
+  <button (click) = 'sendDataToParent()'>Click Me</button>

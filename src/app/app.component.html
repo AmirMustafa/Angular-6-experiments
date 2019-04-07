@@ -1,21 +1,108 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+    <h1 class="text-danger">
+      Welcome to {{ youknowmyname()}}!
+    </h1>
+    <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+    
+    <div class="container">
+      <br>
+      <!-- <input type="text" name="" class="form-control" (click) = "getEmail($event)"> -->
+      <!-- Using Template variable -->
+      
+      <!-- <input type="text" name="" class="form-control" #email (click) = "getEmail(email.value)"> -->
+      
+      <!-- <input type="text" name="" class="form-control" #email>
+      <button  (click) = "getEmail(email.value)">Click Me</button>
+      <br><br> -->
+  
+      <!-- Two Way Data Binding -->
+      <input [(ngModel)]='email' (click) = getEmail()>
+  
+      <h2 class="text-danger">
+        My name is {{ biodata.name | uppercase }}. I was born in {{ biodata.born | date: 'shortDate' }}. I am {{ biodata.age }} years old. I got
+         {{ biodata.boards }}
+        percent in 12th class. My salary expectation is {{ biodata.salary | currency : 'INR' }}.
+      </h2>
+  
+      <!-- ngClass -->
+      <!-- <div [ngClass] = "' colorChange bgColor singleCssColorChange '"> -->
+      <div [ngClass] = " multiCssClass ">
+        ngClass applied.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto accusamus 
+        autem nisi officiis veniam eaque voluptates perferendis labore exercitationem maxime maiores fugit 
+        unde eos corrupti amet esse nihil, fuga ullam.
+      </div>
+  
+      <!-- ngStyle -->
+      <div [ngStyle] = " inlineCSSStyle ">
+        ngStyle applied.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto accusamus 
+        autem nisi officiis veniam eaque voluptates perferendis labore exercitationem maxime maiores fugit 
+        unde eos corrupti amet esse nihil, fuga ullam.
+      </div>
+      <br>
+      
+      <!-- ngIF -->
+      <div *ngIf = " myName === 'Amir Mustafa'; then mainpart else elsepart " > 
+        
+      </div>
+  
+      <ng-template #mainpart> <!-- Initializing this with the reference variable and will use this in if of above div -->
+        ngIf works - Please like and share this page with others
+        <br>
+        By {{myName}}
+      </ng-template>
+      
+      <ng-template #elsepart> <!-- Initializing this with the reference variable and will use this in else of above div -->
+        This is your else part
+      </ng-template>
+  
+      <!-- ngSwitch -->
+      <div [ngSwitch] = "favColor">
+        <div *ngSwitchCase = " 'red' " > This is switch case for {{favColor}}</div>
+        <div *ngSwitchCase = " 'green' " > This is switch case for {{favColor}}</div>
+        <div *ngSwitchCase = " 'blue' " > This is switch case for {{favColor}}</div>
+        
+        <div *ngSwitchDefault> This is the default case</div>
+      </div>
 
-<router-outlet></router-outlet>
+       <!-- ngFor -->
+      <div *ngFor = "let col of colors">
+          {{ col }} <br>
+      </div> <br>
+
+      <div *ngFor = "let bio of biodatas">
+          {{bio.id}} {{bio.name}}
+      </div>
+
+      <!-- with index of ngFor -->
+      <div *ngFor = "let bio of biodatas; index as i; first as f; last as l"> 
+          {{bio.id}} {{bio.name}} index = {{i}} , first = {{f}}, last = {{l}}
+      </div>
+
+   
+    
+  <router-outlet></router-outlet>
+  <!-- for ng-container -->
+  <app-registration>
+    <ng-container class="headingPart"> <!-- We have replaced div with ng-container so that this div will not be visible -->
+        Hiiii for Heading Part
+    </ng-container>
+    <ng-container class="bodyPart">
+        Hiiii for BODY PART
+    </ng-container>
+  </app-registration>     <!-- New Component -->
+
+  <!-- adding simple component here -->
+  <app-simple-form></app-simple-form>
+
+  <!-- for ng-content -->
+  <!-- <app-registration>
+    <div class="headingPart">
+        Hiiii for Heading Part
+    </div>
+    <div class="bodyPart">
+        Hiiii for BODY PART
+    </div>
+  </app-registration>     New Component --> 
+  <!-- <app-registration (childClass) = "childData=$event" [parentData] = "newData"></app-registration>     <!-- New Component -->
+  {{childData}}

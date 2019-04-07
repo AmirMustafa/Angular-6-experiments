@@ -1,0 +1,11 @@
+.colorChange {
+    color: white;
+}
+
+.bgColor {
+    background: black
+}
+
+.singleCssColorChange {
+    font-style: italic;
+}
