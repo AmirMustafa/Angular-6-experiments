@@ -14,13 +14,16 @@ import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { NewcomponentComponent } from './newcomponent/newcomponent.component';
 import { SimpleFormComponent } from './simple-form/simple-form.component';
+import { ServicesComponent } from './services/services.component';
+import { BioDataService } from './bio-data.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
     NewcomponentComponent,
-    SimpleFormComponent
+    SimpleFormComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { SimpleFormComponent } from './simple-form/simple-form.component';
    // CustomSlice        // We register our custom pipe class name after importing above
    // ReverseStr
   ],
-  providers: [],
+  providers: [BioDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
